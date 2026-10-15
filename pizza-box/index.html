@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review us</title>
+<!--
+  HOW TO USE (one copy of this file per client)
+  1. Edit the four lines in CONFIG below: name, tagline, Google review link, Instagram handle.
+     The Google link must be the DIRECT review link (it opens the star-rating box), e.g.
+     https://search.google.com/local/writereview?placeid=XXXXXXXX
+     Get it from Google's Place ID Finder, or from the owner's Business Profile > "Ask for reviews".
+  2. Optional: put the client's logo next to this file as logo.png. If there is none, the name shows instead.
+  3. Upload it anywhere that serves a web page (GitHub Pages, Netlify Drop, Carrd embed).
+     That page URL is what you write to the NFC chip and put in the QR code.
+-->
+<script>
+const CONFIG = {
+  name:      "The Pizza Box",
+  tagline:   "Thanks for stopping by! Tell us how your slice was.",
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJTTbdRQBZwokRDRyTNOktpV4",
+  instagram: ""   // no @; leave "" to hide the button
+};
+</script>
+<style>
+  :root{--bg:#14213D;--card:#ffffff;--ink:#14213D;--muted:#6b7385;--gold:#FBBC04}
+  *{box-sizing:border-box;margin:0}
+  body{min-height:100vh;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+       display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  .card{background:var(--card);border-radius:20px;max-width:380px;width:100%;padding:32px 24px;text-align:center;
+        box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .logo{max-width:140px;max-height:90px;margin:0 auto 12px;display:block}
+  h1{color:var(--ink);font-size:24px;margin-bottom:6px}
+  .stars{color:var(--gold);font-size:26px;letter-spacing:4px;margin:8px 0 6px}
+  p{color:var(--muted);font-size:15px;margin-bottom:24px}
+  a.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:14px;
+        font-size:17px;font-weight:600;text-decoration:none;margin-bottom:12px}
+  .google{background:#1a73e8;color:#fff}
+  .insta{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);color:#fff}
+  .foot{margin-top:18px;font-size:11px;color:#a0a6b4}
+</style>
+</head>
+<body>
+<main class="card">
+  <img class="logo" src="logo.png" alt="" onerror="this.remove()">
+  <h1 id="name"></h1>
+  <div class="stars">★★★★★</div>
+  <p id="tagline"></p>
+  <a class="btn google" id="g" href="#">Leave a Google review</a>
+  <a class="btn insta" id="ig" href="#">Follow us on Instagram</a>
+  <div class="foot">Your honest feedback helps us a lot.</div>
+</main>
+<script>
+  document.title = "Review " + CONFIG.name;
+  document.getElementById("name").textContent = CONFIG.name;
+  document.getElementById("tagline").textContent = CONFIG.tagline;
+  document.getElementById("g").href = CONFIG.googleReviewUrl;
+  if (CONFIG.instagram) {
+    document.getElementById("ig").href = "https://instagram.com/" + CONFIG.instagram.replace(/^@/,"");
+  } else {
+    document.getElementById("ig").remove();   // no Instagram: hide the button
+  }
+</script>
+</body>
+</html>
